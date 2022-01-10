@@ -1,6 +1,24 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        /* If array is Sorted
+        vector<int> a;
+        sort(nums.begin(),nums.end());
+        int i=0,j=nums.size()-1;
+        while(i<j){
+            if(nums[i]+nums[j]==target){
+                a.push_back(i);
+                a.push_back(j);
+                return a;
+            }
+            else if(nums[i]+nums[j]<target){
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return a;*/
         vector<int> a;
         unordered_map<int,int> mp;
         int n=nums.size();
