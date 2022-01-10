@@ -1,13 +1,10 @@
 class Solution {
 public:
     int findNumbers(vector<int>& nums) {
-        int cnt=0;
-        for(int i=0;i<nums.size();i++){
-            string str = to_string(nums[i]);
-            if((str.size())%2 == 0 )
-                cnt++;
+        int ans = 0;
+        for(auto it:nums){
+            ans += (int)log10(it)&1;
         }
-        return cnt;
-        
+        return ans;
     }
 };
