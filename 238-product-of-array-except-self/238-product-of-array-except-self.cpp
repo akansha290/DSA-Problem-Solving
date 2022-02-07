@@ -9,9 +9,11 @@ public:
         vector<int> R(n,1);
         //Result Vector;
         vector<int> ans(n,1);
+        //Filling the the left Prefix
         for(int i=1;i<n;i++){
             L[i] = L[i-1]*nums[i-1];
         }
+        //Filling the Right Prefix
         for(int i=n-2;i>=0;i--){
             R[i] = R[i+1]*nums[i+1];
         }
