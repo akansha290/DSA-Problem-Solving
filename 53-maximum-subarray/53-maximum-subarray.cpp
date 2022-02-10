@@ -9,6 +9,5 @@ public:
             curr_sum = curr_sum<=0?0:curr_sum;
         }
         return max_sum;
-        
     }
 };
