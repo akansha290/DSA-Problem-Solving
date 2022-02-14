@@ -3,7 +3,7 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         //Boyer Moore Voting Algorithm
         int sz = nums.size();
-        int num1 = -1, num2 = -1;
+        int num1 = INT_MIN, num2 = INT_MIN;
         int cnt1 = 0, cnt2 = 0;
         for(auto num:nums){
             if(num == num1) cnt1+=1;
@@ -29,7 +29,8 @@ public:
         }
         // cout<<num1<<" "<<num2<<" "cnt1<<" "<<cnt2;
         if(cnt1>(sz/3)) ans.push_back(num1);
-        if(cnt2>(sz/3) and num1!=num2) ans.push_back(num2);
+        if(cnt2>(sz/3)) ans.push_back(num2);
+        // if(cnt2>(sz/3) and num1!=num2) ans.push_back(num2);
         
         return ans;
     }
