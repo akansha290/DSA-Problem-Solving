@@ -13,10 +13,11 @@ class Solution{
             
             // using gap method
             int gap = ceil((float)(m+n)/2);
-            int total = n+m, i =0,j = gap;
+            int total = n+m;
             
             while(gap > 0)
             {
+                int i =0,j = gap;
                 while(j < total){
                     // comparing in same array
                     if(j<n and nums1[i] > nums1[j]){
