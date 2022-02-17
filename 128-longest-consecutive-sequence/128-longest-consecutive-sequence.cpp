@@ -7,11 +7,11 @@ public:
         }
         int longestStreak = 0;
         for(auto it:nums){
-            if(!st.count(it-1)){
+            if(st.find(it-1)==st.end()){
                 int currnum = it;
                 int currstreak = 1;
                 
-                while(st.count(currnum+1)){
+                while(st.find(currnum+1)!=st.end()){
                     currnum+=1;
                     currstreak+=1;
                 }
