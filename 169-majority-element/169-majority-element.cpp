@@ -1,16 +1,18 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        //Moore's Voting Algorithm
-        int count = 0, candidate;
+        int count=0, candidate=0;
         for(auto num:nums){
-            if(count==0) 
+            if(count==0){
                 candidate=num;
-            if(candidate==num)
+                count=1;
+            }
+            else if(num==candidate){
                 count++;
-            else
+            }
+            else{
                 count--;
-            
+            }
         }
         return candidate;
     }
