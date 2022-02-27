@@ -7,44 +7,27 @@ using namespace std;
 class Solution{
     public:
         //Function to merge the arrays.
-        void merge(long long nums1[], long long nums2[], int n, int m) 
+        void merge(long long arr1[], long long arr2[], int n, int m) 
         { 
             // code here 
-            
-            // using gap method
-            int gap = ceil((float)(m+n)/2);
-            int total = n+m;
-            
-            while(gap > 0)
-            {
-                int i =0,j = gap;
-                while(j < total){
-                    // comparing in same array
-                    if(j<n and nums1[i] > nums1[j]){
-                        swap(nums1[i],nums1[j]);
-                    }
-                    
-                    // comapring 1 and 2 array
-                    else if(j>=n and i<n and nums1[i] > nums2[j-n]){
-                        swap(nums1[i],nums2[j-n]);
-                    }
-                    
-                    //comparing in same array 2
-                    else if(j>=n and i>=n and nums2[i-n] > nums2[j-n]){
-                        swap(nums2[i-n],nums2[j-n]);
-                    }
-                    i++, j++;
-                } 
-                    if(gap == 1) gap =0;
-                    
-                    else
-                    {
-                        gap = ceil((float)gap/2);
-                        i=0;
-                        j = gap;
-                    }
+            long long total = m+n;
+            long long gap = ceil(float(m+n)/2);
+            while(gap>0){
+                int i=0,j=gap;
+                while(j<total){
+                    if(j<n and arr1[i]>arr1[j]) swap(arr1[i],arr1[j]);
+                    else if(i<n and j>=n and arr1[i]>arr2[j-n]) swap(arr1[i],arr2[j-n]);
+                    else if(i>=n and j>=n and arr2[i-n]>arr2[j-n]) swap(arr2[i-n],arr2[j-n]);
+                    i++;
+                    j++;
+                }
+                if(gap==1) gap=0;
+                else{
+                    gap = ceil((float)gap/2);
+                }
+                
             }
-        }
+        } 
 };
 
 // { Driver Code Starts.
