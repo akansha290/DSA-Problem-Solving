@@ -1,11 +1,11 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int minele=INT_MAX, maxprofit = 0;
-        for(auto it:prices){
-            minele = min(minele,it);
-            maxprofit = max(maxprofit,it-minele);
+       int max_profit = 0, min_price = INT_MAX;
+        for(int i=0;i<prices.size();i++){
+            min_price = min(min_price,prices[i]);
+            max_profit = max(max_profit,prices[i]-min_price);
         }
-        return maxprofit;
+        return max_profit;
     }
 };
