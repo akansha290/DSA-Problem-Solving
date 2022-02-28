@@ -1,12 +1,12 @@
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        int totalsteps = m+n-2;
+        int totalSteps = m+n-2;
         int r = min(m,n)-1;
-        double res = 1.0;
+        double ans = 1.0;
         for(int i=1;i<=r;i++){
-            res = res* (totalsteps-r+i)/i;
+            ans = ans *(totalSteps-i+1)/i;
         }
-        return (int)res;
+        return (int)ans;
     }
 };
