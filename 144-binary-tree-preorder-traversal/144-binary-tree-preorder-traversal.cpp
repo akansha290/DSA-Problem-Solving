@@ -17,12 +17,13 @@ public:
         stack<TreeNode* > st;
         st.push(root);
         while(!st.empty()){
-            root = st.top();
-            ans.push_back(root->val);
+            TreeNode *node = st.top();
             st.pop();
-            if(root->right) st.push(root->right);
-            if(root->left) st.push(root->left);
+            ans.push_back(node->val);
+            if(node->right) st.push(node->right);
+            if(node->left) st.push(node->left);
         }
         return ans;
+        
     }
 };
