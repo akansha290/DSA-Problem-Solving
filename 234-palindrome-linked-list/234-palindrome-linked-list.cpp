@@ -10,19 +10,47 @@
  */
 class Solution {
 public:
+    ListNode *rev(ListNode* head){
+        if(head==NULL)
+            return head;
+        ListNode *prev=NULL;
+        while(head){
+            ListNode *nex = head->next;
+            head->next = prev;
+            prev = head;
+            head = nex;
+        }
+        return prev;
+    }
+    
     bool isPalindrome(ListNode* head) {
-        vector<int> vec;
-        while(head!=NULL){
-            vec.push_back(head->val);
-            head = head->next;
+        if(head==NULL)
+            return true;
+        ListNode *dummy = new ListNode();
+        dummy->next=head;
+        ListNode *slow=dummy, *fast=dummy;
+        
+        while(fast!=NULL and fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        int left=0, right=vec.size()-1;
-        while(left<=right){
-            if(vec[left]!=vec[right])
+        
+        cout<<slow->val<<" ";
+        
+        ListNode *newhead = rev(slow->next);
+        slow->next = newhead;
+        if(slow->next) slow = slow->next;
+        
+        cout<<slow->val<<" ";
+        
+        while(slow!=NULL){
+            if(head->val != slow->val)
                 return false;
-            left+=1;
-            right-=1;
+            head = head->next;
+            slow = slow->next;
         }
+        
         return true;
+        
     }
 };
