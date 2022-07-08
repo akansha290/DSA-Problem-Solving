@@ -10,11 +10,12 @@ public:
         return sum;
     }
     bool isHappy(int n) {
-        set<int> st;
-        while(n!=1 and st.find(n)==st.end()){
-            st.insert(n);
-            n = getNumber(n);
+        int slow = n;
+        int fast = getNumber(n);
+        while(fast!=1 and slow!=fast){
+            slow = getNumber(slow);
+            fast = getNumber(getNumber(fast));
         }
-        return n==1;
+        return fast==1;
     }
 };
