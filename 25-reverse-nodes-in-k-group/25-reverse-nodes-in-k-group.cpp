@@ -16,17 +16,19 @@ public:
         ListNode *dummy = new ListNode();
         dummy->next = head;
         
-        ListNode *prev=dummy, *curr=dummy, *nex=dummy;
-        
-        int n=0;
-        while(curr->next!=NULL){
-            n+=1;
+        ListNode *curr = head;
+        int len = 0;
+        while(curr){
+            len+=1;
             curr = curr->next;
         }
         
-        while(n>=k){
+        ListNode *prev = dummy, *nex=dummy;
+        
+        while(len>=k){
             curr = prev->next;
             nex = curr->next;
+            
             for(int i=1;i<k;i++){
                 curr->next = nex->next;
                 nex->next = prev->next;
@@ -34,9 +36,9 @@ public:
                 nex = curr->next;
             }
             prev = curr;
-            n-=k;
+            len-=k;
         }
-        return dummy->next;
         
+        return dummy->next;
     }
 };
