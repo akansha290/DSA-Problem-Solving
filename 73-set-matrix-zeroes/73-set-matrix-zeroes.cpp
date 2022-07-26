@@ -1,26 +1,25 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& mat) {
-        int row = mat.size(),col=mat[0].size();
-        bool col1 = false;
-        for(int i=0;i<row;i++){
-            if(mat[i][0]==0)
-                col1=true;
-            for(int j=1;j<col;j++){
+        int r = mat.size(), c = mat[0].size();
+        vector<int> row,col;
+        
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
                 if(mat[i][j]==0){
-                    mat[i][0]=0;
-                    mat[0][j]=0;
+                    row.push_back(i);
+                    col.push_back(j);
                 }
             }
         }
-        for(int i=row-1;i>=0;i--){
-            for(int j=col-1;j>=1;j--){
-                if(mat[i][0]==0 or mat[0][j]==0){
-                    mat[i][j]=0;
+        
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(find(row.begin(),row.end(),i)!=row.end() or find(col.begin(),col.end(),j)!=col.end()){
+                    // cout<<i<<" "<<j<<endl;
+                    mat[i][j] = 0;
                 }
             }
-            if(col1)
-                mat[i][0]=0;
         }
     }
 };
