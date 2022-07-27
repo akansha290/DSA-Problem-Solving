@@ -10,7 +10,7 @@ public:
             }
             else{
                 ans.push_back(temp);
-                temp = it;
+                temp=it;
             }
         }
         ans.push_back(temp);
