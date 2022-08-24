@@ -2,28 +2,30 @@ class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> ans;
-        int n=nums.size();
+        long long n = nums.size();
+        if(n<=3) return ans;
         sort(nums.begin(),nums.end());
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
-                int tar2 = target - nums[i] - nums[j];
-                int left=j+1, right=n-1;
+                long long new_target = target-nums[i]*1L-nums[j];
+                long long left = j+1, right = n-1;
                 while(left<right){
-                    int x = nums[left]+nums[right];
-                    if(x<tar2) left++;
-                    else if(x>tar2) right--;
+                    long long newsum = nums[left]+nums[right];
+                    vector<int> temp(4,0);
+                    if(newsum<new_target) left++;
+                    else if(newsum>new_target) right--;
                     else{
-                        vector<int> v(4,0);
-                        v[0] = nums[i];
-                        v[1] = nums[j];
-                        v[2] = nums[left];
-                        v[3] = nums[right];
-                        ans.push_back(v);
                         
-                        while(left<right and nums[left]==v[2]) left++;
-                        while(left<right and nums[right]==v[3]) right--;
+                        temp[0] = nums[i];
+                        temp[1] = nums[j];
+                        temp[2] = nums[left];
+                        temp[3] = nums[right];
+                        ans.push_back(temp);
                         
+                        while(left<right and temp[2]==nums[left]) left++;
+                        while(left<right and temp[3]==nums[right]) right--;
                     }
+                    
                 }
                 while(j+1<n and nums[j+1]==nums[j]) j++;
             }
