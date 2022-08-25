@@ -12,8 +12,8 @@ public:
         if(node->next==NULL)
             node = NULL;
         node->val = node->next->val;
-        ListNode *temp = node->next;
+        ListNode *tmp = node->next;
         node->next = node->next->next;
-        delete(temp);
+        delete(tmp);
     }
 };
